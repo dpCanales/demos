@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Demo</title>
+        <base th:substituteby="_layout/includes :: styles"/>
+
+    </head>
+    <body>
+        <div layout:fragment="main" >
+            <div id="indexVue" >
+                <header>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-primary active" data-bs-toggle="modal" data-bs-target="#modalProductos">Nuevo</a>
+                    </div>
+                </header>
+
+                <div class="container" >
+
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th>item</th>
+                                <th>Nombre</th>
+                                <th>Cantidad</th>
+                                <th>Reutilizable</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(item,idx) in productos">
+                                <td > 
+                                    <span v-text="idx+1"></span>
+                                </td>
+                                <td > 
+                                    <span v-text="item.nombre"></span>
+                                </td>
+                                <td > 
+                                    <span v-text="item.cantidad"></span>
+                                </td>
+                                <td > 
+                                    <span v-if="item.reutilizable">SI</span>
+                                    <span v-else="">NO</span>
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalProductos" v-on:click="inicializarDatos(item)"> Editar</button>
+                                </td>
+                                <td>
+                                    <button class="btn btn-danger"> Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div th:substituteby="view/modal"></div>
+            </div>
+        </div>
+        <div layout:fragment="js">
+            <div th:substituteby="_layout/includes :: javascript">
+            </div>
+            <script th:src="@{/index.js}" charset="utf-8"></script>
+        </div>
+    </body>
+</html>
