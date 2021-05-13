@@ -34,8 +34,8 @@ public class ProductoImplDAO implements ProductoDAO {
 
     @Override
     public int save(Producto producto) {
-        String sql = "insert into producto(nombre, cantidad, reutilizable) values(?,?,?)";
-        int res = jdbcTemplate.update(sql, producto.getNombre(), producto.getCantidad(), producto.getReutilizable());
+        String sql = "insert into producto(nombre, cantidad, reutilizable) values(?,?,?,?)";
+        int res = jdbcTemplate.update(sql, producto.getNombre(), producto.getCantidad(), producto.getReutilizable(), "ACT");
         return res;
     }
 

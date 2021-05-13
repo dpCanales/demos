@@ -24,8 +24,7 @@ new Vue({
                 success: function (response) {
                     if (response.success) {
                         $vue.allProductos();
-                        var myModalEl = document.getElementById('modalProductos');
-                        myModalEl.dispose();
+                        $('#modalProductos').modal('hide');
                         alert(response.message, "success");
                     } else {
                         alert(response.message, "error");
@@ -44,8 +43,8 @@ new Vue({
                 success: function (response) {
                     if (response.success) {
                         $vue.allProductos();
-                        var myModalEl = document.getElementById('modalProductos');
-                        myModalEl.dispose();
+                        $('#modalProductos').modal('hide');
+
                         alert(response.message, "success");
                     } else {
                         alert(response.message, "error");
